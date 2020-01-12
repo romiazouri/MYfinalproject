@@ -32,6 +32,9 @@ from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateFiel
 from wtforms import ValidationError
 
 
+from DemoFormProject.Models.QueryFormStructure import QueryFormStructure 
+
+
 
 @app.route('/')
 @app.route('/home')
@@ -77,27 +80,31 @@ def Album():
 
 @app.route('/Query', methods=['GET', 'POST'])
 def Query():
-    print ("Running from query()")
+    ##print ("Running from query()")
     Name = None
     capital = ''
-    form = CountryForm()
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\capitals.csv'))
     df = df.set_index('Country')
-    if (form.validate_on_submit()):
+
+    form = QueryFormStructure(request.form)
+     
+    if (request.method == 'POST' ):
         name = form.name.data
         if (name in df.index):
             capital = df.loc[name,'Capital']
         else:
             capital = name + ', no such country'
         form.name.data = ''
-    #raw_data_table = df.to_html(classes = 'table table-hover')
+
+    raw_data_table = df.to_html(classes = 'table table-hover')
+
     return render_template('Query.html', 
-        form = form, 
-        name = capital, 
-        raw_data_table = df.to_html(classes = 'table table-hover'),
-        title='Query by the user',
-        year=datetime.now().year,
-        message='This page will use the web forms to get user input'
-    )
+            form = form, 
+            name = capital, 
+            raw_data_table = raw_data_table,
+            title='Query by the user',
+            year=datetime.now().year,
+            message='This page will use the web forms to get user input'
+        )
 
 

@@ -29,12 +29,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DemoFormProject\Models\QueryFormStructure.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="DemoFormProject\__init__.py" />
     <Compile Include="DemoFormProject\views.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DemoFormProject\" />
+    <Folder Include="DemoFormProject\Models\" />
     <Folder Include="DemoFormProject\static\" />
     <Folder Include="DemoFormProject\static\content\" />
     <Folder Include="DemoFormProject\static\fonts\" />
