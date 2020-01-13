@@ -80,7 +80,7 @@ def Album():
 
 @app.route('/Query', methods=['GET', 'POST'])
 def Query():
-    ##print ("Running from query()")
+
     Name = None
     capital = ''
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\capitals.csv'))

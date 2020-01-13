@@ -3,58 +3,28 @@
 {% block content %}
 
 <h2>{{title}}</h2>
-<p>This page will enable the user to input a data field</p>
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-<ul>
-    {% for message in messages %}
-    <li>{{ message[1] }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
 
+<p>This page will enable the user to input a data field</p>
 
     <form method=post>
         {{ form.csrf }}
         <table>
             <tr>
-                <td class="input text">
-                    {{ form.name.label }}
-                </td>
-                <td>
-                    {{ form.name }}
-                </td>
-                <td>
-                    {% if form.name.errors %}
-                    <ul class="text-danger">{% for error in form.name.errors %}<li>{{ error }}</li>{% endfor %}</ul>
-                    {% endif %}
-                </td>
+                <td class="input text"> {{ form.name.label }} </td>
+                <td>                    {{ form.name }}       </td>
             </tr>
             <tr>
                 <td></td>
-                <td class="input submit">
-                    <input type="submit" value="Capital">
-                </td>
-                <td></td>
+                <td class="input submit"> <input type="submit" value="Capital"> </td>
             </tr>
         </table>
     </form>
-
-    <style>
-        table, tr, td{
-            font-size: 22px
-        }
-        h2{
-            position: relative;
-            left: 400px;
-        }
-    </style>
 
     <p><h1>Capital is : <b>{{name}}</b></h1></p>
 
     <h3> Table is </h3>
     {{ raw_data_table | safe}}
+
 
     {% endblock %}
 
