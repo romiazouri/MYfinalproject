@@ -89,6 +89,7 @@ def Query():
     form = QueryFormStructure(request.form)
      
     if (request.method == 'POST' ):
+        Country  = name
         name = form.name.data
         if (name in df.index):
             capital = df.loc[name,'Capital']
@@ -101,6 +102,7 @@ def Query():
     return render_template('Query.html', 
             form = form, 
             name = capital, 
+            Country=Country,
             raw_data_table = raw_data_table,
             title='Query by the user',
             year=datetime.now().year,
