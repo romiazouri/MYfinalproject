@@ -6,12 +6,53 @@
 <h3>{{ message }}</h3>
 
 <address>
+    <div class="row my-grid-borders">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Year</td>
+                    <td>the year when the hurricane hit.</td>
+                </tr>
+                <tr>
+                    <td>WindsMPH</td>
+                    <td>Wind speed, or wind flow speed of the hurricane.</td>
+                </tr>
+                <tr>
+                    <td>PressureMB</td>
+                    <td> the atmospheric force exerted on one square meter of surface. As terrain rises above sea level. </td>
+                </tr>
+                <tr>
+                    <td>times</td>
+                    <td>how many times the hurricane hit.</td>
+                </tr>
+                <tr>
+                    <td>BaseDamage</td>
+                    <td>The damage created by the hurricane.</td>
+                </tr>
+                <tr>
+                    <td>AffectedStates</td>
+                    <td>The states that were affected by the hurricane.</td>
+                </tr>
+                <tr>
+                    <td>deaths</td>
+                    <td>How many people died.</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 
         .collapsible {
-           background-color: #061d53;
-                color: white;
+            background-color: #061d53;
+            color: white;
             cursor: pointer;
             padding: 18px;
             width: 100%;
@@ -33,7 +74,7 @@
         }
     </style>
 
-    <button type="button" class="collapsible">Click for Camille dataset</button>
+    <button type="button" class="collapsible">Click for Easy dataset</button>
     <div class="content">
         <p>
 
@@ -77,7 +118,7 @@
 
                     </tbody>
                 </table>
-                </div>
+            </div>
 
         </p>
     </div>
@@ -98,9 +139,8 @@
             });
         }
     </script>
-   
-</address>
 
+</address>
 
 
 {% endblock %}
