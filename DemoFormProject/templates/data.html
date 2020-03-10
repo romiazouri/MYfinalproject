@@ -1,0 +1,78 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<address>
+
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            When a storm's maximum sustained winds reach 74 mph, it is called a hurricane. The Saffir-Simpson Hurricane Wind Scale is a 1 to 5 rating, or category,
+            based on a hurricane's maximum sustained winds.
+            The higher the category, the greater the hurricane's potential for property damage.
+            World Hurricane Report shows as all the hurricanes that happend between the years 1950-2012.
+            The report shows us the name of the hurricane, the year, the WindsMPH, the PressureMB, how many times he showed, the base damage,
+            the affected states, and deathes.
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-4"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Hurricane_Isabel_from_ISS.jpg/1200px-Hurricane_Isabel_from_ISS.jpg" width="200" height="120"></div>
+        <div class="col-md-4"><img src="https://s29755.pcdn.co/wp-content/uploads/2019/07/Hurricane_1_iStock.jpg" width="200" height="120"></div>
+        <div class="col-md-4"><img src="https://i.insider.com/5b9971618ea82ff0248b5095?width=1100&format=jpeg&auto=webp" width="200" height="120"></div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">Easy Dataset</div>
+        <div class="col-md-4">
+            Hurricane Easy was the fifth tropical storm, hurricane, and major hurricane of the 1950 Atlantic hurricane season.
+            The hurricane developed in the western Caribbean Sea on September 1, and tracked northeastward. After crossing Cuba,
+            the hurricane rapidly strengthened in the eastern Gulf of Mexico to reach peak winds of 125 mph (205 km/h).
+        </div>
+        <div class="col-md-4"><a href="{{ url_for('Easy') }}">Go to Easy hurricane Report </a></div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">Camille Dataset</div>
+        <div class="col-md-4">
+            Hurricane Camille was the second most intense tropical cyclone on record to strike the United States. The most intense storm of the 1969 Atlantic hurricane season, Camille originated as a tropical depression on August 14, south of Cuba, from a long-tracked tropical wave. Located in a favorable environment for strengthening,
+            the storm quickly intensified into a Category 2 hurricane before striking the western part of Cuba on August 15.
+            Camille hurricane log: year, WindsMPH, PressureMB, how many times he showed, base damage,
+            the affected states and deathes.
+        </div>
+        <div class="col-md-4"><a href="{{ url_for('Camille') }}">Go to Camille hurricane Report </a></div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">Katrina Dataset</div>
+        <div class="col-md-4">
+            Hurricane Katrina was the costliest tropical cyclone on record, tied with Hurricane Harvey in 2017, causing $ 125 billion in damage,
+            particularly in the city of New Orleans and the surrounding areas, and over 1,200 deaths.
+        </div>
+        <div class="col-md-4"><a href="{{ url_for('Katrina') }}">Go to Katrina hurricane Report </a></div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+    </div>
+
+</address>
+
+
+
+{% endblock %}

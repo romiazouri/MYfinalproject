@@ -1,0 +1,108 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+<address>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        .collapsible {
+            background-color: #061d53;
+                color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+
+    <button type="button" class="collapsible">Click for Katrina dataset</button>
+    <div class="content">
+        <p>
+
+            <div class="row my-grid-borders">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Details</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Year</td>
+                            <td>2005</td>
+                        </tr>
+                        <tr>
+                            <td>WindsMPH</td>
+                            <td>125</td>
+                        </tr>
+                        <tr>
+                            <td>PressureMB</td>
+                            <td>920</td>
+                        </tr>
+                        <tr>
+                            <td>times</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>BaseDamage</td>
+                            <td>81000</td>
+                        </tr>
+                        <tr>
+                            <td>AffectedStates</td>
+                            <td>Los Angeles, Mississippi, Florida, Alabama</td>
+                        </tr>
+                        <tr>
+                            <td>deaths</td>
+                            <td>1836</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </p>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+
+
+</address>
+
+
+
+
+{% endblock %}
