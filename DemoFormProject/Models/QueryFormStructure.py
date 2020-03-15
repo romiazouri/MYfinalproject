@@ -11,8 +11,7 @@ from wtforms import TextField, TextAreaField, SelectField, DateField
 from wtforms import validators, ValidationError
 
 from wtforms.validators import DataRequired
-### ----------------------------------------------------------- ###
-
+#
 
 
 
@@ -22,7 +21,7 @@ from wtforms.validators import DataRequired
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class QueryFormStructure(FlaskForm):
-    name   = StringField('Country Name:  ' , validators = [DataRequired()])
+    name   = StringField(' Name:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
 
 
@@ -37,6 +36,10 @@ class QueryFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class LoginFormStructure(FlaskForm):
+    username   = StringField('User name:  ' , validators = [DataRequired()])
+    username   = StringField('User name:  ' , validators = [DataRequired()])
+    username   = StringField('User name:  ' , validators = [DataRequired()])
+    username   = StringField('User name:  ' , validators = [DataRequired()])
     username   = StringField('User name:  ' , validators = [DataRequired()])
     password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
@@ -63,17 +66,8 @@ class UserRegistrationFormStructure(FlaskForm):
     username   = StringField('User name:  ' , validators = [DataRequired()])
     password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
+## ----------------------------------------------------------- ###
 
-## This class have the fields that the user can set, to have the query parameters for analysing the data
-##   This form is where the user can set different parameters, depand on your project,
-##   that will be used to do the data analysis (using Pandas etc.)
-## You can see three fields:
-##   The fields that will be part of this form are specific to your project
-##   Please complete this class according to your needs
-##   the 'submit' button - the button the user will press to have the 
-##                         form be "posted" (sent to the server for process)
-#class DataParametersFormStructure(FlaskForm):
-#    
-#    submit = SubmitField('Submit')
+
 
 
