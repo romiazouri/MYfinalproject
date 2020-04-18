@@ -18,6 +18,7 @@ from wtforms.validators import DataRequired
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from flask_wtf import FlaskForm
 
 import json 
 import requests
@@ -36,7 +37,12 @@ from wtforms import ValidationError
 from DemoFormProject.Models.QueryFormStructure import QueryFormStructure
 from DemoFormProject.Models.QueryFormStructure import UserRegistrationFormStructure
 from DemoFormProject.Models.QueryFormStructure import LoginFormStructure 
-
+from DemoFormProject.Models.QueryFormStructure import enteryears
+from flask_bootstrap import Bootstrap
+bootstrap = Bootstrap(app)
+import base64
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
 
@@ -175,36 +181,40 @@ def Login():
 @app.route('/Query', methods=['GET', 'POST'])
 def Query():
 
-    Name = None
-    Country = ''
-    capital = ''
+    
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\hurricNamed.csv'))
-    df = df.set_index('Name')
+    
 
-    form = QueryFormStructure(request.form)
+    form = enteryears()
+    chart = ""
      
     if (request.method == 'POST' ):
-        name = form.name.data
-        Country = name
-        if (name in df.index):
-            capital = df.loc[name,'Capital']
-        else:
-            capital = name + ', no such country'
-        form.name.data = ''
+        startyear = form.start_year.data
+        endyear = form.end_year.data
+        df=df[["Year", "deaths"]]
+        df=df.groupby("Year").sum()
+        df=df.loc[startyear:endyear]
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        df.plot(kind="bar", ax=ax)
+        chart = plot_to_img(fig)
 
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\hurricNamed.csv'))
 
-    raw_data_table = df.to_html(classes = 'table table-hover')
 
     return render_template('Query.html', 
             form = form, 
-            name = capital, 
-            Country = Country,
-            raw_data_table = raw_data_table,
             title='Query by the user',
-            year=datetime.now().year,
-            message='This page will use the web forms to get user input'
+            chart = chart
         )
+
+
+def plot_to_img(fig):
+    pngImage = io.BytesIO()
+    FigureCanvas(fig).print_png(pngImage)
+    pngImageB64String = "data:image/png;base64,"
+    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+    return pngImageB64String
+
 
 
 

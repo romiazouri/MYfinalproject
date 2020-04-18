@@ -71,3 +71,8 @@ class UserRegistrationFormStructure(FlaskForm):
 
 
 
+class enteryears(FlaskForm):
+    start_year= StringField('Enter a start year:' , validators = [DataRequired])
+    end_year= StringField('Enter an end year:' , validators = [DataRequired])
+    submit = SubmitField('submit')
+
