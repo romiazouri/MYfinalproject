@@ -141,7 +141,7 @@ def Register():
             db_table = ""
 
             flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
-            # Here you should put what to do (or were to go) if registration was good
+           
         else:
             flash('Error: User with this Username already exist ! - '+ form.username.data)
             form = UserRegistrationFormStructure(request.form)
@@ -154,10 +154,7 @@ def Register():
         repository_name='Pandas',
         )
 
-# -------------------------------------------------------
-# Login page
-# This page is the filter before the data analysis
-# -------------------------------------------------------
+
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
     form = LoginFormStructure(request.form)
@@ -165,7 +162,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            #return redirect('<were to go if login is good!')
+            
         else:
             flash('Error in - Username and/or password')
    
