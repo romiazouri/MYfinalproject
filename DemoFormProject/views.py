@@ -46,6 +46,7 @@ from matplotlib.figure import Figure
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
 
+#יצירת העמודים
 
 @app.route('/')
 @app.route('/home')
@@ -162,7 +163,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            
+            return redirect('Query')
         else:
             flash('Error in - Username and/or password')
    
