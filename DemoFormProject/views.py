@@ -4,7 +4,6 @@ from DemoFormProject import app
 from DemoFormProject.Models.LocalDatabaseRoutines import create_LocalDatabaseServiceRoutines
 from datetime import datetime
 from flask import render_template, redirect, request
-
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -12,10 +11,8 @@ from wtforms.validators import DataRequired
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-
 import json 
 import requests
-
 import io
 import base64
 
@@ -50,6 +47,8 @@ def home():
         year=datetime.now().year,
     )
 
+
+#This is a rout to the contact page
 @app.route('/contact')
 def contact():
     """Renders the contact page"""
@@ -60,6 +59,8 @@ def contact():
         message='Please contact me'
     )
 
+
+#This is a rout to about page
 @app.route('/about')
 def about():
     """Renders the about page."""
@@ -70,6 +71,8 @@ def about():
         message='What is "Hurricane"?'
     )
 
+
+#This is a rout to the album page
 @app.route('/Album')
 def Album():
     """Renders the about page."""
@@ -80,6 +83,8 @@ def Album():
         message='Welcome to my picture album'
     )
 
+
+#This is a rout to the data page
 @app.route('/data')
 def data():
     """Renders the about page."""
@@ -90,6 +95,8 @@ def data():
         message='World Hurricane Report'
     )
 
+
+#This is a rout to Easy hurricane dataset page 
 @app.route('/Easy')
 def Easy():
     
@@ -104,6 +111,8 @@ def Easy():
         message='Easy Hurricane Report'
     )
 
+
+#This is a rout to Camille hurricane dataset page 
 @app.route('/Camille')
 def Camille():
     """Renders the about page."""
@@ -114,6 +123,8 @@ def Camille():
         message='Camille Hurricane Report'
     )
 
+
+#This is a rout to Kathrina hurricane dataset page 
 @app.route('/Katrina')
 def Katrina():
     """Renders the about page."""
@@ -124,6 +135,7 @@ def Katrina():
         message='Katrina Hurricane Report'
     )
 
+#This is a rout to register page
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
     form = UserRegistrationFormStructure(request.form)
@@ -148,6 +160,7 @@ def Register():
         )
 
 
+#This is a rout to login page
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
     form = LoginFormStructure(request.form)
@@ -168,6 +181,7 @@ def Login():
         )
 
 
+#This is a rout to the query page
 @app.route('/Query', methods=['GET', 'POST'])
 def Query():
 
