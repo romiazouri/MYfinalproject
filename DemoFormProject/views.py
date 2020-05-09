@@ -1,13 +1,7 @@
-"""
-Routes and views for the flask application.
-"""
 
-from datetime import datetime
-from flask import render_template
+
 from DemoFormProject import app
-
 from DemoFormProject.Models.LocalDatabaseRoutines import create_LocalDatabaseServiceRoutines
-
 from datetime import datetime
 from flask import render_template, redirect, request
 
@@ -18,7 +12,6 @@ from wtforms.validators import DataRequired
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from flask_wtf import FlaskForm
 
 import json 
 import requests
@@ -27,10 +20,9 @@ import io
 import base64
 
 from os import path
-
-from flask   import Flask, render_template, flash, request
-from wtforms import Form, BooleanField, StringField, PasswordField, validators
-from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateField
+from flask   import Flask, flash
+from wtforms import Form, BooleanField, PasswordField, validators
+from wtforms import TextField, TextAreaField, SelectField, DateField
 from wtforms import ValidationError
 
 
@@ -46,7 +38,7 @@ from matplotlib.figure import Figure
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
 
-#יצירת העמודים
+#This is a rout to the home page
 
 @app.route('/')
 @app.route('/home')

@@ -21,7 +21,7 @@ class QueryFormStructure(FlaskForm):
 
 
 
-
+    #user login
 class LoginFormStructure(FlaskForm):
     username   = StringField('User name:  ' , validators = [DataRequired()])
     username   = StringField('User name:  ' , validators = [DataRequired()])
@@ -33,12 +33,12 @@ class LoginFormStructure(FlaskForm):
 
 
 
-
+    #user registration
 class UserRegistrationFormStructure(FlaskForm):
     FirstName  = StringField('First name:  ' , validators = [DataRequired()])
     LastName   = StringField('Last name:  ' , validators = [DataRequired()])
     PhoneNum   = StringField('Phone number:  ' , validators = [DataRequired()])
-    EmailAddr  = StringField('E-Mail:  ' , validators = [DataRequired()])
+    EmailAddr  = StringField('E-Mail:  ')
     username   = StringField('User name:  ' , validators = [DataRequired()])
     password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
@@ -46,7 +46,7 @@ class UserRegistrationFormStructure(FlaskForm):
 
 
 
-
+    #query forms
 class enteryears(FlaskForm):
     start_year= StringField('Enter a start year:' , validators = [DataRequired])
     end_year= StringField('Enter an end year:' , validators = [DataRequired])
