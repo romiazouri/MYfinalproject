@@ -190,7 +190,7 @@ def Query():
     
 
     form = enteryears()
-    chart = ""
+    chart = "https://papers.co/wallpaper/papers.co-mc83-wallpaper-between-storm-clouds-sky-40-wallpaper.jpg"
      
     if (request.method == 'POST' ):
         startyear = form.start_year.data
