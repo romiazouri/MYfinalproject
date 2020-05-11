@@ -9,28 +9,38 @@ def create_LocalDatabaseServiceRoutines():
     return LocaflDatabaseServiceRoutines()
 
 
-#קורא את רשימת המשתמשים ומחזיר אותה
+
+
 class LocaflDatabaseServiceRoutines(object):
     def __init__(self):
         self.name = 'Data base service routines'
         self.index = {}
         self.UsersDataFile = path.join(path.dirname(__file__), '..\\static\\Data\\users.csv')
 
+
+
+# Read users data into a dataframe
     def ReadCSVUsersDB(self):
         df = pd.read_csv(self.UsersDataFile)
         return df
 
+
+
+# Saves the DataFrame (input parameter) into the users csv
     def WriteCSVToFile_users(self, df):
         df.to_csv(self.UsersDataFile, index=False)
         
-        #פעולה הבודקת האם השם של המשתמש קיים
+
+# Check if username is in the data file
     def IsUserExist(self, UserName):
         # Load the database of users
         df = self.ReadCSVUsersDB()
         df = df.set_index('username')
         return (UserName in df.index.values)
 
-    #פעולה הבודקת האם השם והסיסמה של המשתמש תואמים
+
+
+   # return boolean if username/password pair is in the DB
     def IsLoginGood(self, UserName, Password):
         df = self.ReadCSVUsersDB()
         df=df.reset_index()
@@ -40,7 +50,7 @@ class LocaflDatabaseServiceRoutines(object):
         df = df.set_index('password')
         return (Password in df.index.values)
      
-    #פעולה המוסיפה יוזר חדש (register)
+    # Add a new user to the DB
     def AddNewUser(self, User):
         df = self.ReadCSVUsersDB()
         dfNew = pd.DataFrame([[User.FirstName.data, User.LastName.data, User.PhoneNum.data, User.EmailAddr.data, User.username.data, User.password.data]], columns=['FirstName', 'LastName', 'PhoneNum', 'EmailAddr',  'username', 'password'])

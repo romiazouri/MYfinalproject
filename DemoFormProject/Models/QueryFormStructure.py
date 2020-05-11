@@ -47,6 +47,9 @@ class UserRegistrationFormStructure(FlaskForm):
 
 
     #query forms
+    ## This class have the fields that the user can set, to have the query parameters for analysing the data
+    ## This form is where the user can set different parameters, in my project the parameters are: start year and end year.
+    ##that will be used to do the data analysis (using Pandas etc.)
 class enteryears(FlaskForm):
     start_year= StringField('Enter a start year:' , validators = [DataRequired])
     end_year= StringField('Enter an end year:' , validators = [DataRequired])
