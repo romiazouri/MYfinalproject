@@ -146,6 +146,7 @@ def Register():
             db_table = ""
 
             flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
+            #Here you should put what to d (or where to go) if registration is good
            
         else:
             flash('Error: User with this Username already exist ! - '+ form.username.data)
@@ -169,6 +170,7 @@ def Login():
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
             return redirect('Query')
+            #If login is good open the query page
         else:
             flash('Error in - Username and/or password')
    
@@ -184,14 +186,9 @@ def Login():
 #This is a rout to the query page
 @app.route('/Query', methods=['GET', 'POST'])
 def Query():
-
-    
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\hurricNamed.csv'))
-    
-
     form = enteryears()
     chart = "https://papers.co/wallpaper/papers.co-mc83-wallpaper-between-storm-clouds-sky-40-wallpaper.jpg"
-     
     if (request.method == 'POST' ):
         startyear = form.start_year.data
         endyear = form.end_year.data
@@ -202,7 +199,6 @@ def Query():
         ax = fig.add_subplot(111)
         df.plot(kind="bar", ax=ax)
         chart = plot_to_img(fig)
-
 
 
     return render_template('Query.html', 
