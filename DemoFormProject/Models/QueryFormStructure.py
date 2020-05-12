@@ -21,7 +21,7 @@ class QueryFormStructure(FlaskForm):
 
 
 
-    #user login
+    #Registers the user's inputs as 'username' and 'password', and creates a submit field.
 class LoginFormStructure(FlaskForm):
     username   = StringField('User name:  ' , validators = [DataRequired()])
     username   = StringField('User name:  ' , validators = [DataRequired()])
@@ -33,7 +33,7 @@ class LoginFormStructure(FlaskForm):
 
 
 
-    #user registration
+ #Registers the user's inputs as 'FirstName', 'LastName', 'PhoneNum', 'EmailAddr', 'username' and 'password', and also creates a submit field.
 class UserRegistrationFormStructure(FlaskForm):
     FirstName  = StringField('First name:  ' , validators = [DataRequired()])
     LastName   = StringField('Last name:  ' , validators = [DataRequired()])

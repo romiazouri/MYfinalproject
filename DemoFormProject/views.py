@@ -134,8 +134,11 @@ def Register():
 
     if (request.method == 'POST' and form.validate()):
         if (not db_Functions.IsUserExist(form.username.data)):
+            # If there isn't another user with that username
             db_Functions.AddNewUser(form)
             db_table = ""
+             # Adds a new user to the system.
+
 
             flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
             #Here you should put what to d (or where to go) if registration is good
@@ -160,6 +163,7 @@ def Login():
 
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
+            # Checks if the input matches the information in the system:
             flash('Login approved!')
             return redirect('Query')
             #If login is good open the query page
@@ -190,7 +194,9 @@ def Query():
         fig = plt.figure()
         ax = fig.add_subplot(111)
         df.plot(kind="bar", ax=ax)
+        #Creates the graph
         chart = plot_to_img(fig)
+        #Converts the graph to an image so it could be displayed
 
 
     return render_template('Query.html', 
