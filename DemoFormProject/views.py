@@ -40,7 +40,6 @@ db_Functions = create_LocalDatabaseServiceRoutines()
 @app.route('/')
 @app.route('/home')
 def home():
-    """Renders the home page."""
     return render_template(
         'index.html',
         title='Home Page',
@@ -51,7 +50,6 @@ def home():
 #This is a rout to the contact page
 @app.route('/contact')
 def contact():
-    """Renders the contact page"""
     return render_template(
         'contact.html',
         title='Contact page',
@@ -63,7 +61,6 @@ def contact():
 #This is a rout to about page
 @app.route('/about')
 def about():
-    """Renders the about page."""
     return render_template(
         'about.html',
         title='Some about Hurricanes',
@@ -75,7 +72,6 @@ def about():
 #This is a rout to the album page
 @app.route('/Album')
 def Album():
-    """Renders the about page."""
     return render_template(
         'PictureAlbum.html',
         title='Pictures',
@@ -87,7 +83,6 @@ def Album():
 #This is a rout to the data page
 @app.route('/data')
 def data():
-    """Renders the about page."""
     return render_template(
         'data.html',
         title='WORLD HURRICANE REPORT',
@@ -102,7 +97,6 @@ def Easy():
     
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\hurricNamed.csv'))
     raw_data_table = df.to_html(classes = 'table table-hover')
-    """Renders the about page."""
     return render_template(
         'Easy.html',
         title='WORLD HURRICANE REPORT',
@@ -115,7 +109,6 @@ def Easy():
 #This is a rout to Camille hurricane dataset page 
 @app.route('/Camille')
 def Camille():
-    """Renders the about page."""
     return render_template(
         'Camille.html',
         title='WORLD HURRICANE REPORT',
@@ -127,7 +120,6 @@ def Camille():
 #This is a rout to Kathrina hurricane dataset page 
 @app.route('/Katrina')
 def Katrina():
-    """Renders the about page."""
     return render_template(
         'Katrina.html',
         title='WORLD HURRICANE REPORT',
