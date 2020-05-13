@@ -1,5 +1,7 @@
 
-
+### ----------------------------------------------------------- ###
+### --- include all software packages and libraries needed ---- ###
+### ----------------------------------------------------------- ###
 from datetime import datetime
 
 from flask_wtf import FlaskForm
@@ -20,20 +22,36 @@ class QueryFormStructure(FlaskForm):
 
 
 
-
-    #Registers the user's inputs as 'username' and 'password', and creates a submit field.
+#------------------------------------------------------------------------------------
+#   This class have the fields that are part of the Login form.
+#   This form will get from the user a 'username' and a 'password' and sent to the server
+#   to check if this user is authorised to continue
+#   You can see three fields:
+#   the 'username' field - will be used to get the username
+#   the 'password' field - will be used to get the password
+#   the 'submit' button - the button the user will press to have the 
+#   form be "posted" (sent to the server for process)
+#------------------------------------------------------------------------------------
 class LoginFormStructure(FlaskForm):
-    username   = StringField('User name:  ' , validators = [DataRequired()])
-    username   = StringField('User name:  ' , validators = [DataRequired()])
-    username   = StringField('User name:  ' , validators = [DataRequired()])
-    username   = StringField('User name:  ' , validators = [DataRequired()])
     username   = StringField('User name:  ' , validators = [DataRequired()])
     password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
 
 
-
- #Registers the user's inputs as 'FirstName', 'LastName', 'PhoneNum', 'EmailAddr', 'username' and 'password', and also creates a submit field.
+#------------------------------------------------------------------------------------
+# This class have the fields of a registration form
+#   This form is where the user can register himself. It will have sll the information
+#   we want to save on a user (general information) and the username ans PW the new user want to have
+# You can see three fields:
+#   the 'FirstName' field - will be used to get the first name of the user
+#   the 'LastName' field - will be used to get the last name of the user
+#   the 'PhoneNum' field - will be used to get the phone number of the user
+#   the 'EmailAddr' field - will be used to get the E-Mail of the user
+#   the 'username' field - will be used to get the username
+#   the 'password' field - will be used to get the password
+#   the 'submit' button - the button the user will press to have the 
+#                         form be "posted" (sent to the server for process)
+#------------------------------------------------------------------------------------
 class UserRegistrationFormStructure(FlaskForm):
     FirstName  = StringField('First name:  ' , validators = [DataRequired()])
     LastName   = StringField('Last name:  ' , validators = [DataRequired()])
@@ -45,11 +63,12 @@ class UserRegistrationFormStructure(FlaskForm):
 
 
 
-
+    #------------------------------------------------------------------------------------
     #query forms
     ## This class have the fields that the user can set, to have the query parameters for analysing the data
     ## This form is where the user can set different parameters, in my project the parameters are: start year and end year.
     ##that will be used to do the data analysis (using Pandas etc.)
+    #------------------------------------------------------------------------------------
 class enteryears(FlaskForm):
     start_year= StringField('Enter a start year:' , validators = [DataRequired])
     end_year= StringField('Enter an end year:' , validators = [DataRequired])

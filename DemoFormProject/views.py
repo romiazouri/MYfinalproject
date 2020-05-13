@@ -34,9 +34,9 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to the home page
-
+#------------------------------------------------------------------------------------
 @app.route('/')
 @app.route('/home')
 def home():
@@ -46,8 +46,9 @@ def home():
         year=datetime.now().year,
     )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to the contact page
+#------------------------------------------------------------------------------------
 @app.route('/contact')
 def contact():
     return render_template(
@@ -57,8 +58,9 @@ def contact():
         message='Please contact me'
     )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to about page
+#------------------------------------------------------------------------------------
 @app.route('/about')
 def about():
     return render_template(
@@ -68,8 +70,9 @@ def about():
         message='What is "Hurricane"?'
     )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to the album page
+#------------------------------------------------------------------------------------
 @app.route('/Album')
 def Album():
     return render_template(
@@ -79,8 +82,9 @@ def Album():
         message='Welcome to my picture album'
     )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to the data page
+#------------------------------------------------------------------------------------
 @app.route('/data')
 def data():
     return render_template(
@@ -90,8 +94,9 @@ def data():
         message='World Hurricane Report'
     )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to Easy hurricane dataset page 
+#------------------------------------------------------------------------------------
 @app.route('/Easy')
 def Easy():
     
@@ -105,8 +110,9 @@ def Easy():
         message='Easy Hurricane Report'
     )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to Camille hurricane dataset page 
+#------------------------------------------------------------------------------------
 @app.route('/Camille')
 def Camille():
     return render_template(
@@ -116,8 +122,9 @@ def Camille():
         message='Camille Hurricane Report'
     )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to Kathrina hurricane dataset page 
+#------------------------------------------------------------------------------------
 @app.route('/Katrina')
 def Katrina():
     return render_template(
@@ -127,7 +134,11 @@ def Katrina():
         message='Katrina Hurricane Report'
     )
 
+#------------------------------------------------------------------------------------
 #This is a rout to register page
+# This function will get user details, will check if the user already exists
+# and it doesn't, it saves the details in the users data base
+#------------------------------------------------------------------------------------
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
     form = UserRegistrationFormStructure(request.form)
@@ -155,8 +166,9 @@ def Register():
         repository_name='Pandas',
         )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to login page
+#------------------------------------------------------------------------------------
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
     form = LoginFormStructure(request.form)
@@ -178,19 +190,25 @@ def Login():
         repository_name='Pandas',
         )
 
-
+#------------------------------------------------------------------------------------
 #This is a rout to the query page
+#------------------------------------------------------------------------------------
 @app.route('/Query', methods=['GET', 'POST'])
 def Query():
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\hurricNamed.csv'))
     form = enteryears()
+    #Uses the function enteryears so the user will be able to enter ther years he want
     chart = "https://papers.co/wallpaper/papers.co-mc83-wallpaper-between-storm-clouds-sky-40-wallpaper.jpg"
     if (request.method == 'POST' ):
         startyear = form.start_year.data
+        #The start year the user entered 
         endyear = form.end_year.data
+        #The end year the user entered 
         df=df[["Year", "deaths"]]
+        #Takes the parameters that I want to use for my graph: deaths by years
         df=df.groupby("Year").sum()
         df=df.loc[startyear:endyear]
+        #locates the data for the years the user entered.
         fig = plt.figure()
         ax = fig.add_subplot(111)
         df.plot(kind="bar", ax=ax)
